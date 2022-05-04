@@ -7,42 +7,18 @@
   <body>
     <script>
       const choices = ['Rock', 'Paper', 'Scissors']; 
+      console.log(choices);
 
       function computerPlay() {
         return choices[Math.floor(Math.random()*3)];
       }
 
       function playRound(playerSelection, computerSelection) {
-        let playerFormat = playerSelection.slice(0,1).toUpperCase() + playerIn.slice(1).toLowerCase();
-        if choices.includes(playerFormat) {
-          if playerFormat === computerSelection {
-            return "Tie! Try again!"
-          }
-          else if playerFormat === "Rock" {
-            if computerSelection === 'Paper' {
-              return "You Lose! Paper beats Rock"
-            }else {
-              return "You Win! Rock beats Scissors"
-            }
-          }
-          else if playerFormat === "Paper" {
-            if computerSelection === 'Scissors' {
-              return "You Lose! Scissors beats Paper"
-            }else {
-              return "You Win! Paper beats Rock"
-            }
-          }
-          else {
-            if computerSelection === 'Rock' {
-              return "You Lose! Rock beats Scissors"
-            }else {
-              return "You Win! Scissors beats Paper"
-            }
-          }
-        }else {
-          return "Invalid input"
-        }
-    
+        playerSelection = playerSelection.toLowerCase();
+        console.log(playerSelection);
+      }
+        console.log(playRound('ROCK', computerPlay()));
+
     </script>
   </body>
 </html>
