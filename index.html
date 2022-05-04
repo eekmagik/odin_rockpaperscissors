@@ -11,6 +11,13 @@
       function computerPlay() {
         return choices[Math.floor(Math.random()*3)];
       }
+
+      let playerIn = prompt("Please choose: Rock, Paper or Scissors")
+      let playerFormat = playerIn.slice(0,1).toUpperCase() + playerIn.slice(1).toLowerCase();
+      console.log(playerFormat);
+      function playRound(playerSelection, computerSelection) {
+        
+      }
     
     </script>
   </body>
