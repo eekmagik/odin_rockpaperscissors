@@ -17,10 +17,17 @@
         playerSelection = playerSelection.toLowerCase();
         console.log(playerSelection);
         if (choices.includes(playerSelection)) {
-          return('chyeah!')
+          if (computerSelection === playerSelection) {
+            return 'Tie! Try again.'
+          }else if (choices.at(choices.indexOf(playerSelection) -1) === computerSelection) {
+            return 'You win! ' + playerSelection + ' beats ' + computerSelection; 
+          }else {
+            return 'You lose! ' + computerSelection + ' beats ' + playerSelection; 
+          }
         }
       }
-        console.log(playRound('ROCK', computerPlay()));
+      console.log(playRound('ROCK', computerPlay()));
+        
 
     </script>
   </body>
