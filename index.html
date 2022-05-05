@@ -54,6 +54,13 @@
           }
         }
         console.log("Your Score: " + userScore + "\nComputer Score: " + computerScore);
+        if (userScore === computerScore) {
+          console.log('A draw')
+        }else if (userScore > computerScore) {
+          console.log('You are victorious!')
+        }else {
+          console.log('Better luck next time...')
+        }
       }
 
       game()
