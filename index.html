@@ -5,12 +5,16 @@
     <title>Rock, Paper, Scissors</title>
   </head>
   <body>
-    <button class="choice">Rock</button>
-    <button class="choice">Paper</button>
-    <button class="choice">Scissors</button>
 
-
+    <div class="buttons">
+      <button id="rock">Rock</button>
+      <button id="paper">Paper</button>
+      <button id="scissors">Scissors</button>
+    </div>
+    
     <script>
+      
+
       const choices = ['rock', 'paper', 'scissors']; 
 
       function computerPlay() {
@@ -18,58 +22,65 @@
       }
 
       function playRound(playerSelection, computerSelection) {
-        
-        playerSelection = playerSelection.toLowerCase();
-    
-        if (choices.includes(playerSelection)) {
-          if (computerSelection === playerSelection) {
-            return 'Tie! Try again.'
-          }else if (choices.at(choices.indexOf(playerSelection) -1) === computerSelection) {
-            return 'You win! ' + playerSelection + ' beats ' + computerSelection; 
-          }else {
-            return 'You lose! ' + computerSelection + ' beats ' + playerSelection; 
-          }
+        if (computerSelection === playerSelection) {
+          return 'Tie! Try again.'
+        }else if (choices.at(choices.indexOf(playerSelection) -1) === computerSelection) {
+          return 'You win! ' + playerSelection + ' beats ' + computerSelection; 
         }else {
-          return "Invalid input"
+          return 'You lose! ' + computerSelection + ' beats ' + playerSelection; 
         }
-      }
+      };
+        
+        
       
-      function game(){
-        
-        let userScore = 0;
-        let computerScore = 0;
-        
-        for (let i = 0; i < 100; i++) {
-          let userInput = prompt("Choose: Rock, Paper or Scissors");
-          let computerInput = computerPlay()
-          console.log("Player chooses " + userInput);
-          console.log("Computer chooses " + computerInput);
-          if (!choices.includes(userInput)) {
-            i--
-            console.log(userInput + " is not an available choice")
-          }
-          else if (playRound(userInput,computerInput).includes('win')){
-              userScore += 1;
-              console.log('User wins')
-          }else if (playRound(userInput,computerInput).includes('lose')){
-              computerScore += 1;
-              console.log('Computer wins')
-          }else {
-            console.log('A Tie!')
-          }
-        }
-        console.log("Your Score: " + userScore + "\nComputer Score: " + computerScore);
-        if (userScore === computerScore) {
-          console.log('A draw')
-        }else if (userScore > computerScore) {
-          console.log('You are victorious!')
-        }else {
-          console.log('Better luck next time...')
-        }
-      }
+      const buttons = document.querySelectorAll('button');
+      
+      buttons.forEach((button) => {
+        button.addEventListener("click", function (e){
+          console.log(button.id);
+        });
+      })
+      
 
-      game()
+
       
+      // function game(){
+        
+      //   let userScore = 0;
+      //   let computerScore = 0;
+        
+      //   for (let i = 0; i < 100; i++) {
+      //     let userInput = prompt("Choose: Rock, Paper or Scissors");
+      //     let computerInput = computerPlay()
+      //     console.log("Player chooses " + userInput);
+      //     console.log("Computer chooses " + computerInput);
+      //     if (!choices.includes(userInput)) {
+      //       i--
+      //       console.log(userInput + " is not an available choice")
+      //     }
+      //     else if (playRound(userInput,computerInput).includes('win')){
+      //         userScore += 1;
+      //         console.log('User wins')
+      //     }else if (playRound(userInput,computerInput).includes('lose')){
+      //         computerScore += 1;
+      //         console.log('Computer wins')
+      //     }else {
+      //       console.log('A Tie!')
+      //     }
+      //   }
+      //   console.log("Your Score: " + userScore + "\nComputer Score: " + computerScore);
+      //   if (userScore === computerScore) {
+      //     console.log('A draw')
+      //   }else if (userScore > computerScore) {
+      //     console.log('You are victorious!')
+      //   }else {
+      //     console.log('Better luck next time...')
+      //   }
+      // }
+
+      // game()
+      
+
       
     </script>
   </body>
