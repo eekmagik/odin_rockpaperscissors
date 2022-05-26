@@ -5,6 +5,11 @@
     <title>Rock, Paper, Scissors</title>
   </head>
   <body>
+    <button class="choice">Rock</button>
+    <button class="choice">Paper</button>
+    <button class="choice">Scissors</button>
+
+
     <script>
       const choices = ['rock', 'paper', 'scissors']; 
 
@@ -34,7 +39,7 @@
         let userScore = 0;
         let computerScore = 0;
         
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 100; i++) {
           let userInput = prompt("Choose: Rock, Paper or Scissors");
           let computerInput = computerPlay()
           console.log("Player chooses " + userInput);
