@@ -23,11 +23,14 @@
 
       function playRound(playerSelection, computerSelection) {
         if (computerSelection === playerSelection) {
-          return 'Tie! Try again.'
+          return 'Tie! Try again.';
+          console.log('Tie! Try again.');
         }else if (choices.at(choices.indexOf(playerSelection) -1) === computerSelection) {
           return 'You win! ' + playerSelection + ' beats ' + computerSelection; 
+          console.log('You win! ' + playerSelection + ' beats ' + computerSelection);
         }else {
           return 'You lose! ' + computerSelection + ' beats ' + playerSelection; 
+          console.log('You lose! ' + computerSelection + ' beats ' + playerSelection);
         }
       };
         
@@ -37,7 +40,7 @@
       
       buttons.forEach((button) => {
         button.addEventListener("click", function (e){
-          console.log(button.id);
+          console.log(playRound(button.id, computerPlay()));
         });
       })
       
