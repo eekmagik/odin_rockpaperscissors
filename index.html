@@ -6,48 +6,64 @@
   </head>
   <body>
 
+    <div class="stats">
+      <p id="status"></p>
+      <p id="results"></p>
+      <p id="status"></p>
+    </div> 
+
     <div class="buttons">
       <button id="rock">Rock</button>
       <button id="paper">Paper</button>
       <button id="scissors">Scissors</button>
     </div>
 
-    <div class="stats">
-      <p id="score"></p>
-      <p id="results"></p>
-    </div> 
+
+    
     
     <script>
       
-
       const choices = ['rock', 'paper', 'scissors']; 
+      const status = document.querySelector('#status');
+      const results = document.querySelector('#results');
+
+      const buttons = document.querySelectorAll('button');
+      
+      buttons.forEach((button) => {
+        button.addEventListener("click", function (e){
+          playRound(button.id);
+        });
+      });
 
       function computerPlay() {
         return choices[Math.floor(Math.random()*3)];
       }
 
-      function playRound(playerSelection, computerSelection) {
-        if (computerSelection === playerSelection) {
-          return 'Tie! Try again.';
-          console.log('Tie! Try again.');
+      let playerScore = 0;
+      let computerScore = 0
+
+      function playRound(playerSelection) {
+        let computerSelection = computerPlay();
+        if (playerScore === 5) {
+          document.getElementById('results') = 'You are victorious!'
+          
+        }else if (computerScore === 5){
+          document.getElementById('results') = 'Better luck next time...'
+        
+        }if (computerSelection === playerSelection) {
+          document.getElementById('status').textContent ='Tie! Try again.';
+          
         }else if (choices.at(choices.indexOf(playerSelection) -1) === computerSelection) {
-          return 'You win! ' + playerSelection + ' beats ' + computerSelection; 
-          console.log('You win! ' + playerSelection + ' beats ' + computerSelection);
+          playerScore += 1; 
+          document.getElementById('status').textContent = 'Win! ' + playerSelection + ' beats ' + computerSelection; 
+
         }else {
-          return 'You lose! ' + computerSelection + ' beats ' + playerSelection; 
-          console.log('You lose! ' + computerSelection + ' beats ' + playerSelection);
+          console.log('Lose! ' + computerSelection + ' beats ' + playerSelection); 
+          document.getElementById('status').textContent = 'Lose! ' + computerSelection + ' beats ' + playerSelection; 
+
         }
       };
         
-        
-      
-      const buttons = document.querySelectorAll('button');
-      
-      buttons.forEach((button) => {
-        button.addEventListener("click", function (e){
-          console.log(playRound(button.id, computerPlay()));
-        });
-      })
       
 
 
