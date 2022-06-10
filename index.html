@@ -46,10 +46,14 @@
         let computerSelection = computerPlay();
         if (playerScore === 5) {
           document.getElementById('results') = 'You are victorious!'
+          let computerScore = 0;
+          let playerScore = 0;
           
         }else if (computerScore === 5){
           document.getElementById('results') = 'Better luck next time...'
-        
+          let computerScore = 0;
+          let playerScore = 0;
+
         }if (computerSelection === playerSelection) {
           document.getElementById('status').textContent ='Tie! Try again.';
           
@@ -58,7 +62,7 @@
           document.getElementById('status').textContent = 'Win! ' + playerSelection + ' beats ' + computerSelection; 
 
         }else {
-          console.log('Lose! ' + computerSelection + ' beats ' + playerSelection); 
+          computerScore +=1;
           document.getElementById('status').textContent = 'Lose! ' + computerSelection + ' beats ' + playerSelection; 
 
         }
