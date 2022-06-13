@@ -10,6 +10,8 @@
       <p id="status"></p>
       <p id="results"></p>
       <p id="status"></p>
+      <p id="playScore"></p>
+      <p id="computeScore"></p>
     </div> 
 
     <div class="buttons">
@@ -26,6 +28,8 @@
       const choices = ['rock', 'paper', 'scissors']; 
       const status = document.querySelector('#status');
       const results = document.querySelector('#results');
+      const playScore = document.querySelector('#playerScore');
+      const computeScore = document.querySelector('#computerScore');
 
       const buttons = document.querySelectorAll('button');
       
@@ -43,32 +47,56 @@
       let computerScore = 0
 
       function playRound(playerSelection) {
-        let computerSelection = computerPlay();
-        if (playerScore === 5) {
-          document.getElementById('results') = 'You are victorious!'
-          let computerScore = 0;
-          let playerScore = 0;
-          
-        }else if (computerScore === 5){
-          document.getElementById('results') = 'Better luck next time...'
-          let computerScore = 0;
-          let playerScore = 0;
+        scorecheck(playerScore, computerScore);
 
-        }if (computerSelection === playerSelection) {
+        document.getElementById('playScore').textContent = 'Player Score = ' + playerScore;
+        document.getElementById('computeScore').textContent = 'Computer Score = ' + computerScore;
+
+        let computerSelection = computerPlay();
+        if (computerSelection === playerSelection) {
           document.getElementById('status').textContent ='Tie! Try again.';
-          
+          document.getElementById('playScore').textContent = 'Player Score = ' + playerScore;
+          document.getElementById('computeScore').textContent = 'Computer Score = ' + computerScore;
+
         }else if (choices.at(choices.indexOf(playerSelection) -1) === computerSelection) {
           playerScore += 1; 
           document.getElementById('status').textContent = 'Win! ' + playerSelection + ' beats ' + computerSelection; 
-
+          document.getElementById('playScore').textContent = 'Player Score = ' + playerScore;
+          document.getElementById('computeScore').textContent = 'Computer Score = ' + computerScore;
+          
+          scorecheck(playerScore, computerScore);
+          if (playerScore === 5){
+            computerScore = 0; 
+            playerScore = 0;
+          }
+          
         }else {
           computerScore +=1;
           document.getElementById('status').textContent = 'Lose! ' + computerSelection + ' beats ' + playerSelection; 
-
+          document.getElementById('playScore').textContent = 'Player Score = ' + playerScore;
+          document.getElementById('computeScore').textContent = 'Computer Score = ' + computerScore;
+          
+          scorecheck(playerScore, computerScore);
+          if (computerScore === 5) {
+            computerScore = 0; 
+            playerScore = 0;
+          }
         }
       };
         
-      
+      function scorecheck(playerScore, computerScore) {
+        if (computerScore === 5){
+          document.getElementById('results').textContent = 'Better luck next time...'
+          
+          }
+        else if (playerScore === 5){
+          document.getElementById('results').textContent = 'You are victorious!'
+          
+          }
+        else{
+          document.getElementById('results').textContent = '';
+        }
+      }
 
 
       
